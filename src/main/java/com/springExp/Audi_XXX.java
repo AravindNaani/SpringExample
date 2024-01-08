@@ -1,11 +1,18 @@
 package com.springExp;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Audi_XXX implements Car {
 
+	@Value("${Audi.model}")
 	private String modelName;
 
+	@Value("${Audi.number}")
 	private String number;
 
+	@Value("${Audi.color}")
 	private String color;
 
 	@Override
@@ -48,6 +55,11 @@ public class Audi_XXX implements Car {
 
 	public void setColor(String color) {
 		this.color = color;
+	}
+
+	@Override
+	public String toString() {
+		return "Audi_XXX [modelName=" + modelName + ", number=" + number + ", color=" + color + "]";
 	}
 
 	

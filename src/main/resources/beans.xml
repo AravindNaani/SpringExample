@@ -8,6 +8,8 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
     
     <context:annotation-config></context:annotation-config>
+    <context:property-placeholder location="classpath:application.properties"/>
+    <context:component-scan base-package="com.springExp"></context:component-scan>
     
     <bean id="user" class="com.springDIExp.User" autowire="byName">
     	<property name="id" value="101"/>
@@ -17,6 +19,27 @@
     <bean id="student" class="com.springDIExp.Student">
     	<property name="studentID" value="1750224"/>
     	<property name="studentName" value="Aravind"/>
+    	<property name="hobbies">
+    	<list>
+    	<value>Cricket</value>
+    	<value>Chess</value>
+    	</list>
+    	</property>
+    	
+    	<property name="skills">
+    	<set>
+    	<value>Java</value>
+    	<value>python</value>
+    	<value>Java</value>
+    	</set>
+    	</property>
+    	
+    	<property name="addressMap">
+    	<map>
+    	<entry key="preset" value-ref="adr"></entry>
+    	<entry key="Perment" value-ref="adr1"></entry>
+    	</map>
+    	</property>
     </bean>
     
     <bean id="adr" class="com.springDIExp.Address">
@@ -24,9 +47,14 @@
     	<property name="pincode" value="533255"></property>
     </bean>
     
+     <bean id="adr1" class="com.springDIExp.Address">
+    	<property name="cityName" value="Ravulapalem"/>
+    	<property name="pincode" value="545676"></property>
+    </bean>
+    
     <bean id="car" class="com.springExp.Tata_Punch">
-    	<property name="modelName" value ="TATA PUNCH"/>
-    	<property name="number" value="KA09RR3334"/>
-    	<property name="color" value="Gray"/>
+    	<property name="modelName" value ="${Tata.model}"/>
+    	<property name="number" value="${Tata.number}"/>
+    	<property name="color" value="${Tata.color}"/>
     </bean>
 </beans>
